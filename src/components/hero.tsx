@@ -3,10 +3,8 @@ import { AnimatedChars, AnimatedWords, CountUp, Magnetic } from "@/components/mo
 import { Parallax } from "@/components/reveal";
 import { stats, tools } from "@/data/projects";
 
-// Split the stack into two disjoint lanes so no tag repeats between the marquees.
+// One single lane — each tag appears exactly once (duplicated only for seamless looping).
 const uniqueTools = Array.from(new Set(tools));
-const laneOne = uniqueTools.filter((_, i) => i % 2 === 0);
-const laneTwo = uniqueTools.filter((_, i) => i % 2 === 1).reverse();
 
 
 
