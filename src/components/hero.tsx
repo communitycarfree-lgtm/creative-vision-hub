@@ -34,7 +34,7 @@ export function Hero() {
                 Available for healthcare software projects · Q3 2026
               </p>
 
-              <h1 className="mt-6 font-display text-5xl leading-[0.9] font-extrabold tracking-[-0.04em] sm:text-6xl lg:text-7xl">
+              <h1 className="mt-6 font-display text-4xl leading-[0.95] font-extrabold tracking-[-0.03em] xs:text-5xl sm:text-6xl sm:leading-[0.9] sm:tracking-[-0.04em] lg:text-7xl">
                 <AnimatedChars text="Mostafa Samir" as="span" delay={120} stagger={38} />
                 <br />
                 <AnimatedWords
