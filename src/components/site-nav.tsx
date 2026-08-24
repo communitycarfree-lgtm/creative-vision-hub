@@ -63,7 +63,5 @@ export function SiteNav() {
         </div>
       </nav>
     </header>
-
-    </header>
   );
 }
