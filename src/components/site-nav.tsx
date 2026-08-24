@@ -77,38 +77,63 @@ export function SiteNav() {
               onClick={() => setOpen((v) => !v)}
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
-              className="press grid size-9 shrink-0 place-items-center rounded-full border border-border bg-secondary text-foreground lg:hidden"
+              className="press relative grid size-9 shrink-0 place-items-center overflow-hidden rounded-full border border-border bg-secondary text-foreground lg:hidden"
             >
-              {open ? <X className="size-4" /> : <Menu className="size-4" />}
+              <Menu
+                className={`absolute size-4 transition-all duration-300 ease-out ${
+                  open ? "rotate-90 scale-75 opacity-0" : "rotate-0 scale-100 opacity-100"
+                }`}
+              />
+              <X
+                className={`absolute size-4 transition-all duration-300 ease-out ${
+                  open ? "rotate-0 scale-100 opacity-100" : "-rotate-90 scale-75 opacity-0"
+                }`}
+              />
             </button>
           </div>
         </div>
 
-        {open && (
-          <div className="border-t border-border/70 px-3 pt-2 pb-3 lg:hidden">
-            <ul className="grid gap-1">
-              {links.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    className="block rounded-2xl px-3 py-2.5 text-sm font-semibold text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+        <div
+          className={`grid overflow-hidden transition-[grid-template-rows,opacity] duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] lg:hidden ${
+            open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+          }`}
+        >
+          <div className="min-h-0 overflow-hidden">
+            <div className="border-t border-border/70 px-3 pt-2 pb-3">
+              <ul className="grid gap-1">
+                {links.map((link, i) => (
+                  <li
+                    key={link.href}
+                    className={`transition-all duration-300 ease-out ${
+                      open ? "translate-y-0 opacity-100" : "-translate-y-1.5 opacity-0"
+                    }`}
+                    style={{ transitionDelay: open ? `${60 + i * 45}ms` : "0ms" }}
                   >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <a
-              href="#contact"
-              onClick={() => setOpen(false)}
-              className="press sheen mt-2 flex items-center justify-center gap-2 rounded-full bg-primary px-4 py-2.5 text-xs font-semibold tracking-wide text-primary-foreground uppercase sm:hidden"
-            >
-              <span className="blink-dot size-1.5 shrink-0 rounded-full bg-brand-yellow" />
-              Available Q3 2026
-            </a>
+                    <a
+                      href={link.href}
+                      onClick={() => setOpen(false)}
+                      className="block rounded-2xl px-3 py-2.5 text-sm font-semibold text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="#contact"
+                onClick={() => setOpen(false)}
+                className={`press sheen mt-2 flex items-center justify-center gap-2 rounded-full bg-primary px-4 py-2.5 text-xs font-semibold tracking-wide text-primary-foreground uppercase transition-all duration-300 ease-out sm:hidden ${
+                  open ? "translate-y-0 opacity-100" : "-translate-y-1.5 opacity-0"
+                }`}
+                style={{ transitionDelay: open ? `${60 + links.length * 45}ms` : "0ms" }}
+              >
+                <span className="blink-dot size-1.5 shrink-0 rounded-full bg-brand-yellow" />
+                Available Q3 2026
+              </a>
+            </div>
           </div>
-        )}
+        </div>
+
       </nav>
     </header>
   );
