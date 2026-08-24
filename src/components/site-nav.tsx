@@ -66,11 +66,22 @@ export function SiteNav() {
 
             <a
               href="#contact"
-              className="press sheen hidden shrink-0 items-center gap-2 rounded-full bg-primary px-4 py-2 text-xs font-semibold tracking-wide whitespace-nowrap text-primary-foreground uppercase sm:inline-flex"
+              aria-label="Available Q3 2026 — get in touch"
+              title="Available Q3 2026"
+              className={`press sheen hidden shrink-0 items-center justify-center gap-2 rounded-full bg-primary py-2 text-xs font-semibold tracking-wide whitespace-nowrap text-primary-foreground uppercase transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:inline-flex ${
+                scrolled ? "size-9 px-0" : "px-4"
+              }`}
             >
               <span className="blink-dot size-1.5 shrink-0 rounded-full bg-brand-yellow" />
-              Available Q3 2026
+              <span
+                className={`overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                  scrolled ? "max-w-0 opacity-0" : "max-w-[12rem] opacity-100"
+                }`}
+              >
+                Available Q3 2026
+              </span>
             </a>
+
 
             <button
               type="button"
